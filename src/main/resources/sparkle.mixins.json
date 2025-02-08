@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "miyucomics.sparkle.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "sparkle.refmap.json",
+  "mixins": [
+    "BlockMixin",
+    "EntityMixin",
+    "ItemEntityMixin",
+    "LivingEntityMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
