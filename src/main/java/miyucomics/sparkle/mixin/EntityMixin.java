@@ -13,7 +13,8 @@ import java.util.Random;
 
 @Mixin(Entity.class)
 public abstract class EntityMixin {
-	protected Random random = new Random();
+	private static final Random RANDOM = new Random();
+
 	@Shadow public abstract Level level();
 	@Shadow public abstract double getX();
 	@Shadow public abstract double getY();
@@ -23,10 +24,10 @@ public abstract class EntityMixin {
 	private void addParticles(CallbackInfo info) {
 		if (!level().isClientSide())
 			return;
-		if (Sparkle.SPARKLY_ENTITIES.contains(((Entity) (Object) this).getType()) && random.nextFloat() < 0.1F) {
-			double positionX = (getX() - 0.5D) + random.nextDouble();
-			double positionY = (getY() - 0.5D) + random.nextDouble();
-			double positionZ = (getZ() - 0.5D) + random.nextDouble();
+		if (Sparkle.SPARKLY_ENTITIES.contains(((Entity) (Object) this).getType()) && RANDOM.nextFloat() < 0.1F) {
+			double positionX = (getX() - 0.5D) + RANDOM.nextDouble();
+			double positionY = (getY() - 0.5D) + RANDOM.nextDouble();
+			double positionZ = (getZ() - 0.5D) + RANDOM.nextDouble();
 			level().addParticle(Sparkle.SPARKLE_PARTICLE.get(), positionX, positionY, positionZ, 0, 0, 0);
 		}
 	}
